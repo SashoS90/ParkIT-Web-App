@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <title>Profile Page</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/parking_spots/delete_parking_style.css' %}">
+    </head>
+    <body>
+    <div class="confirmation-card">
+        <div class="confirmation-details">
+            <h1>Delete parking spot?</h1>
+            <div class="form-actions">
+                <form method="post" action="{% url 'delete_parking_spot_page' parkingspot.id %}">
+                    {% csrf_token %}
+                        <button type="submit" class="edit-btn">Yes</button>
+                        <a href="{% url 'listings_view' request.user.id %}" class="edit-btn">No</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}

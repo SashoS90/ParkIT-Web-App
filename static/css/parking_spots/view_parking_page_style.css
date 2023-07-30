@@ -1,0 +1,48 @@
+.parking-spot-container {
+    margin: 20px auto;
+    width: 700px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.parking-spot-container h6 {
+    text-align: center;
+    margin: unset;
+    font-size: 25px;
+}
+
+.parking-spot-container img {
+    max-width: 96%;
+    padding: 14px 14px 0 14px;
+    height: 465px;
+    width: 765px;
+    object-fit: cover;
+}
+
+body > main > div > div > div {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+
+body > main > div > div > div .detail {
+    padding: unset;
+    font-size: 15px;
+    height: fit-content;
+    margin: unset;
+}
+
+.parking-spot-container a {
+    background: #46de4b;
+    width: 160px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 20px auto;
+    margin-bottom: 10px;
+}
+
+.parking-spot-container a:hover{
+    background: black;
+}

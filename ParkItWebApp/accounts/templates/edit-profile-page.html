@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Project</title>
+        <link rel="stylesheet" href="{% static 'css/accounts/edit_profile_style.css' %}">
+    </head>
+    <div>
+        <form action="{% url 'edit_profile_page' request.user.id %}" method="POST" enctype="multipart/form-data">
+            <p class="page-text">Edit Profile</p>
+            {% csrf_token %}
+            <div class="form-errors-box">
+                {{ form.username.errors }}
+            </div>
+            <div class="form_row">
+                <label>Email:</label>
+                {{ form.email }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.email.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>First name:</label>
+                {{ form.first_name }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.first_name.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Last name:</label>
+                {{ form.last_name }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.last_name.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Phone number:</label>
+                {{ form.phone_number }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.phone_number.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Profile Picture:</label>
+                {% if form.profile_picture.value %}
+                    <img src="{{ form.profile_picture.value.url }}" alt="Profile Picture">
+                    <input type="checkbox" name="profile_picture-clear" id="profile_picture-clear_id">
+                    <label for="profile_picture-clear_id">Clear</label>
+                {% else %}
+                    <img src="{% static 'images/no-profile-picture.png' %}" alt="Profile Picture">
+                {% endif %}
+                <input type="file" name="profile_picture" accept="image/*" id="id_profile_picture">
+                {% if form.profile_picture.value %}
+                {% endif %}
+            </div>
+            <div class="form-errors-box">
+                {{ form.profile_picture.errors }}
+            </div>
+            <br>
+            <input type="submit" class="login-btn" value="Confirm">
+        </form>
+    </div>
+{% endblock %}

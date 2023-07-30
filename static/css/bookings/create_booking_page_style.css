@@ -1,0 +1,67 @@
+.parking-spot-container {
+    margin: 20px auto;
+    width: 700px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.parking-spot-container h6 {
+    text-align: center;
+    margin: unset;
+    font-size: 25px;
+}
+
+.parking-spot-container img {
+    max-width: 96%;
+    padding: 14px 14px 0 14px;
+    height: 465px;
+    width: 765px;
+    object-fit: cover;
+}
+
+.parking-spot-container .booking-form-container form .form-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+#id_duration{
+    width: 90px;
+    text-align: center;
+    margin: 0 0 0 441px;
+}
+
+body > main > div > div > form > div:nth-child(7) > span{
+    margin-right: 25px;
+}
+
+#id_price{
+    width: 90px;
+    text-align: center;
+    margin: 0 0 0 485px;
+}
+body > main > div > div > form > div:nth-child(10) > span{
+    margin-right: 43px;
+    margin-left: 4px;
+}
+
+.parking-spot-container .booking-form-container form .control-tab{
+    width: fit-content;
+    margin: 20px auto;
+}
+
+.parking-spot-container .booking-form-container form .control-tab input{
+    font-size: 22px;
+    background: #46de4b;
+    cursor: pointer;
+    color: white;
+}
+
+.parking-spot-container .booking-form-container form .control-tab input:hover{
+    background: black;
+}
+
+body > main > div > div > form > div:nth-child(15){
+    width: fit-content;
+    margin: 20px auto;
+    color: red;
+}

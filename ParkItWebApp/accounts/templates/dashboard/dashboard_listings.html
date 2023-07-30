@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Project</title>
+        <link rel="stylesheet" href="{% static 'css/accounts/dashboard_listings_style.css' %}">
+    </head>
+
+    <div class="profile-card">
+        <div class="profile-picture">
+            {% if object.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Image">
+            {% else %}
+                <img src="{% static 'images/no-profile-picture.png' %}" alt="Profile Image">
+            {% endif %}
+        </div>
+
+        <div class="profile-details">
+            <h1>{{ user.get_full_name }}</h1>
+            <p>Listings</p>
+            <p>{{ total_listings }}</p>
+
+            <p>Bookings</p>
+            <p>{{ total_bookings }}</p>
+
+            <p>Reviews</p>
+            <p>{{ total_reviews }}</p>
+            <p>User rating:</p>
+            <section>
+                <link rel="stylesheet"
+                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                {% if user_rating %}
+                    {% for star in "x"|ljust:user_rating %}
+                        <span class="fa fa-star checked"></span>
+                    {% endfor %}
+                {% else %}
+                    <p>N/A</p>
+                {% endif %}
+            </section>
+        </div>
+    </div>
+
+    <div class="tab-container">
+        <a class="tablinks" href="{% url 'listings_view' request.user.id %}">Listings</a>
+            <a class="tablinks" href="{% url 'bookings_view' request.user.id %}">Bookings</a>
+            <a class="tablinks" href="{% url 'payments_page' request.user.id %}">Payments</a>
+            <a class="tablinks" href="#">Reviews</a>
+    </div>
+
+    {% for listing in owned_parking_spots %}
+        <div class="listing-card">
+            <div class="listing-img">
+                {% if listing.image %}
+                    <img src="{{ listing.image.url }}" alt="listing-img">
+                {% else %}
+                    <img src="{% static 'images/no-property-photo.jpg' %}" alt="listing-img">
+                {% endif %}
+            </div>
+            <div class="listing-details">
+                <h1>{{ listing }}</h1>
+            <div>
+                <p>Full Address:</p>
+                <p>{{ listing.get_full_address }}</p>
+            </div>
+            <div>
+                <p>Type of space:</p>
+                <p>{{ listing.type_of_space }}</p>
+            </div>
+            <div>
+                {% if listing.electric_vehicle_charger %}
+                    <p>Electric charger:</p>
+                    <p>Yes</p>
+                {% else %}
+                    <p>Electric charger:</p>
+                    <p>No</p>
+                {% endif %}
+            </div>
+            <div>
+                <p>Parking fee:</p>
+                <p>{{ listing.hourly_rate }}lv /hr</p>
+            </div>
+            <div>
+                <p>Status:</p>
+                {% if listing.status %}
+                <p>Available</p>
+                {% else %}
+                <p>Unavailable</p>
+                {% endif %}
+            </div>
+            <div>
+                <p>Owner:</p>
+                <p>{{ listing.owner }}</p>
+            </div>
+            </div>
+            <div class="buttons-tab">
+                <a href="{% url 'edit_parking_spot_page' listing.id %}">Edit</a>
+                <br>
+                <a  class="delete-button" href="{% url 'delete_parking_spot_page' listing.id %}">Delete</a>
+            </div>
+
+        </div>
+    {% empty %}
+        <p>No listings.</p>
+    {% endfor %}
+
+{% endblock %}

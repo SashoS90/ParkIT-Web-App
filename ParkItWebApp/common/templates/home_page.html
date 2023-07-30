@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <h1>Welcome to Park<span class="logo-element">.</span>IT</h1>
+    <section>
+        <p> Finding the perfect parking spot has never been easier.
+        Whether you're planning a trip, heading to work, or exploring a new city,
+        our application is here to help you locate and reserve the ideal parking spot that suits your needs.</p>
+
+        <p>With our user-friendly interface, you can search for available parking spots in your desired location,
+            browse through a variety of options, and book your spot hassle-free.
+            Our extensive network of parking providers ensures that you'll always have convenient and reliable
+            options to choose from.</p>
+    </section>
+<div class="container">
+    <img src="{% static 'images/home-page-img.jpg' %}" alt="Image" class="center-image">
+</div>
+
+</body>
+{% endblock %}

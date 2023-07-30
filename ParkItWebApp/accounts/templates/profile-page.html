@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <title>Profile Page</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/accounts/profile_page_style.css' %}">
+    </head>
+    <body>
+    <div class="profile-card">
+        <div class="profile-picture">
+            {% if object.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Image">
+            {% else %}
+                <img src="{% static 'images/no-profile-picture.png' %}" alt="Profile Image">
+            {% endif %}
+        </div>
+        <div class="profile-details">
+            <h1>{{ user.get_full_name }}</h1>
+            <p>Username: {{ user.username }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Mobile Phone: {{ user.phone_number }}</p>
+            <div class="profile-actions">
+                <a href="{% url 'edit_profile_page' request.user.id %}" class="edit-btn">Edit</a>
+                <a href="{% url 'delete_profile_page' request.user.id %}" class="delete-btn">Delete</a>
+                <a href="{% url 'password_change' %}" class="edit-btn">Change Password</a>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}

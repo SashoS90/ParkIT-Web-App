@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Project</title>
+        <link rel="stylesheet" href="{% static 'css/parking_spots/find_parking_page_style.css' %}">
+    </head>
+
+    <div class="page-container">
+        <div class="search-bar">
+            <form method="GET" action="{% url 'find_parking_page' %}">
+                <div>
+                    <input type="search" name="search">
+                    <button type="submit"> Search</button>
+                </div>
+            </form>
+        </div>
+        <div class="results">
+            {% for parking_spot in all_search_results %}
+                <div class="property-card">
+                    <div class="parking-spot-img-box">
+                        {% if parking_spot.image %}
+                            <img src="{{ parking_spot.image.url }}" alt="listing-img">
+                        {% else %}
+                            <img src="{% static 'images/no-property-photo.jpg' %}" alt="listing-img">
+                        {% endif %}
+                    </div>
+                    <div class="parking-spot-details">
+                        <h1>{{ parking_spot }}</h1>
+                        <div>
+                            <p>Full Address:</p>
+                            <p>{{ parking_spot.get_full_address }}</p>
+                        </div>
+                        <div>
+                            <p>Type of space:</p>
+                            <p>{{ parking_spot.type_of_space }}</p>
+                        </div>
+                        <div>
+                            {% if parking_spot.electric_vehicle_charger %}
+                                <p>Electric charger:</p>
+                                <p>Yes</p>
+                            {% else %}
+                                <p>Electric charger:</p>
+                                <p>No</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <p>Parking fee:</p>
+                            <p>{{ parking_spot.hourly_rate }}lv /hr</p>
+                        </div>
+                        <div>
+                            <p>Status:</p>
+                            {% if parking_spot.status %}
+                                <p>Available</p>
+                            {% else %}
+                                <p>Unavailable</p>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <p>Owner:</p>
+                            <p>{{ parking_spot.owner }}</p>
+                        </div>
+                    </div>
+                    <div class="buttons-tab">
+                        <a href="{% url 'parking_spot_details_page' parking_spot.id %}">View</a>
+                        <br>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No results.</p>
+            {% endfor %}
+        </div>
+        {% if is_paginated %}
+            <div class="pagination-container">
+
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                    <li class="pagination-item--wide first">
+                        <a class="pagination-link--wide first" href="?page={{ page_obj.previous_page_number }}">Prev</a>
+                    </li>
+                {% endif %}
+
+                <li class="pagination-item">
+                    <span class="pagination-number">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="pagination-item--wide last">
+                        <a class="pagination-link--wide last" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+
+            </ul>
+        {% endif %}
+
+        </div>
+
+    </div>
+{% endblock %}

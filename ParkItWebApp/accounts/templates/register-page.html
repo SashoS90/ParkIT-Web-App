@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load forms %}
+
+{% block content %}
+<div class="kotak_login">
+    <p class="logo-text">Park<span>.</span>IT</p>
+
+    <form action="{% url 'register_page' %}" method="POST">
+        {% csrf_token %}
+        <div class="form_row">
+            <label>Username:</label>
+            {{ form.username|placeholder:"Username" }}
+        </div>
+        <br>
+        <div class="form-errors-box">
+            {{ form.username.errors }}
+        </div>
+        <div class="form_row">
+            <label>Email:</label>
+            {{ form.email|placeholder:"Email" }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.email.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>First name:</label>
+            {{ form.first_name|placeholder:"First name" }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.first_name.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Last name:</label>
+            {{ form.last_name|placeholder:"Last name" }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.last_name.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Phone number:</label>
+            {{ form.phone_number|placeholder:"Phone number" }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.phone_number.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Password:</label>
+            {{ form.password1|placeholder:"Password" }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.password1.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Confirm Password:</label>
+            {{ form.password2|placeholder:"Confirm password" }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.password2.errors }}
+        </div>
+
+        <input type="submit" class="login-btn" value="REGISTER">
+
+        <div class="link-container">
+            <a class="link" href="{% url 'login_page' %}">Have account? Login</a>
+            <br>
+            <a class="link" href="#">Forgot password?</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

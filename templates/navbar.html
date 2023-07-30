@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Project</title>
+    <link rel="stylesheet" href="{% static 'css/common/styles.css' %}">
+</head>
+<div id="container">
+    <nav>
+        <ul>
+            <li class="logo"><a href="#"><img src="{% static 'images/logo.png' %}" alt="Logo"><span>rk.IT</span></a></li>
+            <li><a href="{% url 'home-page' %}">Home</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url 'profile_page' request.user.id %}">Profile</a>
+                <ul>
+                    <li><a href="{% url 'dashboard' request.user.pk %}">Dashboard</a></li>
+                    <li><a href="{% url 'rent_parking_spot_page' %}">Rent Parking</a></li>
+                    <li><a href="{% url 'find_parking_page' %}">Book Parking</a></li>
+                </ul>
+            <li class="login"><a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <li class="login"><a href="{% url 'login_page' %}">Login</a>
+            {% endif %}
+        </ul>
+    </nav>
+
+</div>

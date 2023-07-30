@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load forms %}
+
+{% block content %}
+<div class="kotak_login">
+    <p class="logo-text">Park<span>.</span>IT</p>
+
+    <form action="{% url 'login_page' %}" method="POST">
+        {% csrf_token %}
+        <div class="form_row">
+            <label>Username:</label>
+            {{ form.username|placeholder:"Username" }}
+        </div>
+        <div class="form-errors-box">
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Password:</label>
+            {{ form.password|placeholder:"Password" }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.non_field_errors }}
+        </div>
+        <br>
+
+        <input type="submit" class="login-btn" value="LOGIN">
+
+        <div class="link-container">
+            <a class="link" href="{% url 'register_page' %}">Not registered?</a>
+            <br>
+            <a class="link" href="{% url 'password_reset' %}">Forgotten password?</a>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

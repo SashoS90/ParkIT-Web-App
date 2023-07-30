@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Project</title>
+        <link rel="stylesheet" href="{% static 'css/parking_spots/rent_parking_page_style.css' %}">
+    </head>
+
+    <form action="{% url 'rent_parking_spot_page' %}" method="POST" enctype="multipart/form-data">
+        <p class="page-text">Rent Parking</p>
+        {% csrf_token %}
+        <div class="form_row">
+            <label>City:</label>
+            {{ form.city }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.city.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>District:</label>
+            {{ form.district }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.district.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Street:</label>
+            {{ form.street }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.street.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>House Number:</label>
+            {{ form.house_number }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.house_number.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Post Code:</label>
+            {{ form.post_code }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.post_code.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Type of Space:</label>
+            {{ form.type_of_space }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.type_of_space.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Hourly Rate:</label>
+            {{ form.hourly_rate }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.hourly_rate.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Electric Charger:</label>
+            {{ form.electric_vehicle_charger }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.electric_vehicle_charger.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Status:</label>
+            {{ form.status }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.status.errors }}
+        </div>
+        <br>
+        <div class="form_row">
+            <label>Image:</label>
+            {{ form.image }}
+        </div>
+        <div class="form-errors-box">
+            {{ form.image.errors }}
+        </div>
+        <br>
+        <input type="submit" class="login-btn" value="Create Listing">
+
+
+    </form>
+{% endblock %}

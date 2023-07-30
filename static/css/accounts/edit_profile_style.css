@@ -1,0 +1,85 @@
+form {
+    width: 350px;
+    background: white;
+    margin: 80px auto;
+    padding: 30px 20px;
+}
+
+label {
+    font-size: 16pt;
+}
+
+.login-btn {
+    background: #46de4b;
+    color: white;
+    font-size: 15pt;
+    width: 100%;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 60px
+}
+
+.login-btn:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.form_row {
+    align-items: center;
+    justify-content: right;
+    display: flex;
+}
+
+form label {
+    font-size: 18px;
+    float: left;
+    width: 10em;
+    margin-right: 1em;
+}
+
+form .form-error-box {
+    font-size: 10px;
+    color: red;
+}
+
+div .page-text {
+    text-align: center;
+    padding: 0 0 0 0;
+    font-weight: bold;
+    font-size: 40px;
+    font-family: 'Bree Serif', 'serif';
+}
+
+body > main > div > form > div:nth-child(16) > a {
+    font-size: 3px;
+    color: blue;
+    text-decoration: none;
+}
+
+body > main > div > form > div:nth-child(16){
+    display: inherit;
+}
+
+body > main > div > form > div:nth-child(16) > img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+body > main > div > form > div:nth-child(16) > label:nth-child(4){
+    margin: 0 0 0 215px;
+    font-size: 10px;
+}
+
+#id_profile_picture{
+    margin: 0 0 0 215px;
+    font-size: 10px;
+    width: 135px;
+}
+
+body > main > div > form > div:nth-child(16) > label:nth-child(1){
+    margin-top: 60px;
+}
+
+#profi

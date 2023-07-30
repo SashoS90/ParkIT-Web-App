@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Project</title>
+        <link rel="stylesheet" href="{% static 'css/parking_spots/edit_parking_page_style.css' %}">
+    </head>
+    <div>
+        <form action="{% url 'edit_parking_spot_page' object.id %}" method="POST" enctype="multipart/form-data">
+            <p class="page-text">Edit Parking</p>
+            {% csrf_token %}
+            <div class="form-errors-box">
+                {{ form.city.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>City:</label>
+                {{ form.city }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.district.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>District:</label>
+                {{ form.district }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.post_code.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Post code:</label>
+                {{ form.post_code }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.street.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Street:</label>
+                {{ form.street }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.house_number.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>House number:</label>
+                {{ form.house_number }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.street.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Street:</label>
+                {{ form.street }}
+            </div>
+            <br>
+            <div class="form-errors-box">
+                {{ form.type_of_space.errors }}
+            </div>
+            <div class="form_row">
+                <label>Type of space:</label>
+                {{ form.type_of_space }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.electric_vehicle_charger.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Electric charger:</label>
+                {{ form.electric_vehicle_charger }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.hourly_rate.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Parking fee:</label>
+                {{ form.hourly_rate }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.status.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Status:</label>
+                {{ form.status }}
+            </div>
+            <div class="form-errors-box">
+                {{ form.image.errors }}
+            </div>
+            <br>
+            <div class="form_row">
+                <label>Parking picture:</label>
+                {% if form.image.value %}
+                    <img src="{{ form.image.value.url }}" alt="parking-image">
+                    <input type="checkbox" name="image-clear" id="image_clear_id">
+                    <label for="image_clear_id">Clear</label>
+                {% else %}
+                    <img src="{% static 'images/no-property-photo.jpg' %}" alt="parking-image">
+                {% endif %}
+                <input type="file" name="image" accept="image/*" id="property-image">
+                {% if form.image.value %}
+                {% endif %}
+            </div>
+            <div class="form-errors-box">
+                {{ form.image.errors }}
+            </div>
+            <br>
+            <input type="submit" class="login-btn" value="Confirm">
+        </form>
+    </div>
+{% endblock %}

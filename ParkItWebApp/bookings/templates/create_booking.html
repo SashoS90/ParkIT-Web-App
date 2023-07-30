@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Project</title>
+        <link rel="stylesheet" href="{% static 'css/bookings/create_booking_page_style.css' %}">
+    </head>
+    <div class="parking-spot-container">
+        {% if parking_spot.image %}
+            <img src="{{ parking_spot.image.url }}" alt="parking-image">
+        {% else %}
+            <img src="{% static 'images/no-property-photo.jpg' %}" alt="parking-image">
+        {% endif %}
+        <h6>{{ parking_spot.get_full_address }}</h6>
+        <br>
+        <div class="booking-form-container">
+            <form action="{% url 'create-bookings-page' parking_spot.id %}" method="post">
+                <div class="form-row">
+                    <label for="id_start_time">Start time:</label>
+                    {{ form.start_time }}
+                </div>
+                <div class="form-errors-box">
+                    {{ form.start_time.errors }}
+                </div>
+                <br>
+                <div class="form-row">
+                    <label for="id_end_time">End time:</label>
+                    {{ form.end_time }}
+                </div>
+                <div class="form-errors-box">
+                    {{ form.end_time.errors }}
+                </div>
+                <br>
+                <div class="form-row">
+                    <label for="id_duration">Duration:</label>
+                    {{ form.duration }}
+                    <span>hrs</span>
+                </div>
+                <div class="form-errors-box">
+                    {{ form.duration.errors }}
+                </div>
+                <br>
+                <div class="form-row">
+                    <label for="id_price">Price:</label>
+                    {{ form.price }}
+                    <span>lv</span>
+                </div>
+                <div class="form-errors-box">
+                    {{ form.price.errors }}
+                </div>
+                <br>
+                <div class="control-tab">
+                    <input type="submit" class="submit-btn" name="submit" value="Book Parking">
+                </div>
+                {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="form-errors-box">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                    </div>
+                {% endif %}
+            </form>
+        </div>
+        <script>
+            const hourlyRate = parseFloat('{{ hourly_rate }}');
+            document.addEventListener("DOMContentLoaded", function () {
+                const startTimeInput = document.getElementById("id_start_time");
+                const endTimeInput = document.getElementById("id_end_time");
+                const durationInput = document.getElementById("id_duration");
+                const priceInput = document.getElementById("id_price");
+                console.log(hourlyRate)
+
+                function calculateDurationAndPrice() {
+                    const startTime = new Date(startTimeInput.value);
+                    const endTime = new Date(endTimeInput.value);
+
+                    if (startTime && endTime && endTime > startTime) {
+                        const durationInMs = endTime - startTime;
+                        const durationInHours = durationInMs / (1000 * 60 * 60);
+                        durationInput.value = Math.round(durationInHours);
+
+                        const totalPrice = (Math.round(durationInHours * hourlyRate * 100) / 100).toFixed(2);
+                        priceInput.value = totalPrice;
+                    } else {
+                        durationInput.value = "";
+                        priceInput.value = "";
+                    }
+                }
+
+                startTimeInput.addEventListener("change", calculateDurationAndPrice);
+                endTimeInput.addEventListener("change", calculateDurationAndPrice);
+            });
+        </script>
+    </div>
+{% endblock %}
+

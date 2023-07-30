@@ -1,0 +1,103 @@
+main {
+    margin: 100px 0 0 0;
+}
+
+.confirmation-card {
+    height: 170px;
+    width: 1000px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.confirmation-details {
+    text-align: center;
+}
+
+.confirmation-details h1 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.confirmation-details p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+.edit-btn,
+.delete-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0000;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #1fcc30;
+}
+
+body > main > div > div > p {
+    padding: 0 0 0 0;
+}
+
+body > main > div > div img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.profile-card {
+    margin-top: 50px;
+    display: flex;
+}
+
+.profile-image, .profile-details {
+    flex: 1;
+}
+
+.delete-btn:hover {
+    background: black;
+}
+
+.edit-btn:hover {
+    background: black;
+}
+
+.profile-card .profile-picture {
+    width: 250px;
+    height: 250px;
+}
+
+body > main > div > div.profile-details > div > a:nth-child(3) {
+    background-color: dodgerblue;
+}
+
+body > main > div > div.profile-details > div > a:nth-child(3):hover {
+    background: black;
+}
+
+body > main > div > div > div > form > .edit-btn {
+    width: 69.8px;
+    height: 51px;
+    border: none;
+    font-size: 18px;
+}
+
+body > main > div > div > div > form > .edit-btn:last-child {
+    height: 32px;
+    width: 29.8px;
+    background: #1fcc30;
+}
+
+body > main > div > div > div > form > .edit-btn:last-child:hover {
+    background: black;
+}
+
