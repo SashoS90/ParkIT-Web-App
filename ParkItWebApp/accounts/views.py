@@ -3,35 +3,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from ParkItWebApp.accounts.forms import RegisterUserForm, LoginUserForm, EditProfileForm
 from django.templatetags.static import static
-from ParkItWebApp.parking_spots.models import ParkingSpot
-from ParkItWebApp.payments.models import Payment
-from ParkItWebApp.reviews.models import Review
+from ParkItWebApp.common.utils import get_common_data
+
 
 UserModel = get_user_model()
-
-
-def get_common_data(user_profile):
-    data = {}
-    owned_parking_spots = ParkingSpot.objects.filter(owner=user_profile)
-    user_bookings = user_profile.bookings.all()
-    total_reviews = Review.objects.filter(parking_spot__in=owned_parking_spots)
-
-    if total_reviews:
-        user_rating = round(sum(review.rating for review in total_reviews) / len(total_reviews))
-    else:
-        user_rating = None
-
-    data['owned_parking_spots'] = owned_parking_spots
-    data['total_listings'] = len(owned_parking_spots)
-    data['total_bookings'] = len(user_bookings)
-    data['total_reviews'] = len(total_reviews)
-    data['user_rating'] = user_rating
-    data['bookings'] = user_bookings
-
-    return data
 
 
 class RegisterUserView(CreateView):
@@ -156,20 +134,20 @@ class BookingsView(DetailView):
         return context
 
 
-class PaymentsView(ListView):
-    model = UserModel
-    template_name = "dashboard/dashboard_payments.html"
-    context_object_name = "user_payments"
-
-    def get_queryset(self):
-        user = self.request.user
-        queryset = Payment.objects.filter(user=user)
-        return queryset
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        user_profile = self.request.user
-        common_data = get_common_data(user_profile)
-        context.update(common_data)
-
-        return context
+# class PaymentsView(ListView):
+#     model = UserModel
+#     template_name = "dashboard/dashboard_payments.html"
+#     context_object_name = "user_payments"
+#
+#     def get_queryset(self):
+#         user = self.request.user
+#         queryset = Payment.objects.filter(user=user)
+#         return queryset
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         user_profile = self.request.user
+#         common_data = get_common_data(user_profile)
+#         context.update(common_data)
+#
+#         return context
