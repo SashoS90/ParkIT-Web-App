@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 
 from ParkItWebApp.accounts.views import RegisterUserView, LoginUserView, LogoutUserView, ProfileView, DashboardView, \
-    EditProfileView, ChangePasswordView, PasswordChangeCompletedView, DeleteProfileView, ListingsView, BookingsView
+    EditProfileView, ChangePasswordView, PasswordChangeCompletedView, DeleteProfileView, ListingsView
 
 urlpatterns = [
     path('register/', RegisterUserView.as_view(), name='register_page'),
@@ -18,6 +18,6 @@ urlpatterns = [
     path('accounts/password_change/done/', PasswordChangeCompletedView.as_view(), name='password_change_completed'),
     path('profile/<int:pk>/delete', DeleteProfileView.as_view(), name='delete_profile_page'),
     path('profile/<int:pk>/listings/', ListingsView.as_view(), name='listings_view'),
-    path('profile/<int:pk>/bookings/', BookingsView.as_view(), name='bookings_view'),
+    # path('profile/<int:pk>/bookings/', BookingsView.as_view(), name='bookings_view'),
     path('profile/<int:pk>/', ProfileView.as_view(), name='profile_page'),
 ]

@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Project</title>
+        <link rel="stylesheet" href="{% static 'css/accounts/dashboard_bookings_style.css' %}">
+    </head>
+
+    <div class="profile-card">
+        <div class="profile-picture">
+            {% if user.profile_picture %}
+                <img src="{{ user.profile_picture.url }}" alt="Profile Image">
+            {% else %}
+                <img src="{% static 'images/no-profile-picture.png' %}" alt="Profile Image">
+            {% endif %}
+        </div>
+
+        <div class="profile-details">
+            <h1>{{ user.get_full_name }}</h1>
+            <p>Listings</p>
+            <p>{{ total_listings }}</p>
+
+            <p>Bookings</p>
+            <p>{{ total_bookings }}</p>
+
+            <p>Reviews</p>
+            <p>{{ total_reviews }}</p>
+            <p>User rating:</p>
+            <section>
+                <link rel="stylesheet"
+                      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                {% if user_rating %}
+                    {% for star in "x"|ljust:user_rating %}
+                        <span class="fa fa-star checked"></span>
+                    {% endfor %}
+                {% else %}
+                    <p>N/A</p>
+                {% endif %}
+            </section>
+        </div>
+    </div>
+
+    <div class="tab-container">
+        <a class="tablinks" href="{% url 'listings_view' request.user.id %}">Listings</a>
+        <a class="tablinks" href="{% url 'bookings_view' request.user.id %}">Bookings</a>
+        <a class="tablinks" href="{% url 'payments_page' request.user.id %}">Payments</a>
+        <a class="tablinks" href="#">Reviews</a>
+    </div>
+
+    {% for booking in bookings %}
+        <div class="booking-card">
+            <div>
+                <h6>ID</h6>
+                <p>{{ booking.id }}</p>
+            </div>
+            <div>
+                <h6>PARKING SPACE</h6>
+                <p>{{ booking.parking_spot }}</p>
+            </div>
+            <div>
+                <h6>START TIME</h6>
+                <p>{{ booking.start_time }}</p>
+            </div>
+            <div>
+                <h6>END TIME</h6>
+                <p>{{ booking.end_time }}</p>
+            </div>
+            <div>
+                <h6>DURATION</h6>
+                <p>{{ booking.duration }}h</p>
+            </div>
+            <div>
+                <h6>TOTAL PRICE</h6>
+                <p>{{ booking.price }}lv</p>
+            </div>
+            <div>
+                <h6>BOOKING DATE</h6>
+                <p>{{ booking.created_at }}</p>
+            </div>
+        <div class="cancel-btn">
+            <a href="{% url 'delete-bookings-page' booking.id %}">Delete</a>
+        </div>
+        </div>
+    {% empty %}
+        <p>No bookings.</p>
+    {% endfor %}
+
+{% endblock %}

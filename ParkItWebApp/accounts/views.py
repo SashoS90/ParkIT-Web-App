@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView, ListView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from django.shortcuts import redirect
 from ParkItWebApp.accounts.forms import RegisterUserForm, LoginUserForm, EditProfileForm
 from django.templatetags.static import static
@@ -120,18 +120,18 @@ class ListingsView(DetailView):
         return context
 
 
-class BookingsView(DetailView):
-    template_name = 'dashboard/dashboard_bookings.html'
-    model = UserModel
-    context_object_name = "user_profile"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        user_profile = self.object
-        common_data = get_common_data(user_profile)
-        context.update(common_data)
-
-        return context
+# class BookingsView(DetailView):
+#     template_name = 'dashboard/../bookings/templates/dashboard_bookings.html'
+#     model = UserModel
+#     context_object_name = "user_profile"
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         user_profile = self.object
+#         common_data = get_common_data(user_profile)
+#         context.update(common_data)
+#
+#         return context
 
 
 # class PaymentsView(ListView):
