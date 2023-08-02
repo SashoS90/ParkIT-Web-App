@@ -11,6 +11,8 @@ class PaymentsView(ListView):
     model = UserModel
     template_name = "dashboard_payments.html"
     context_object_name = "user_payments"
+    paginate_by = 10
+    ordering = "id"
 
     def get_queryset(self):
         user = self.request.user

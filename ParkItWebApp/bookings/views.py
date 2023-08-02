@@ -11,8 +11,8 @@ from .forms import CreateBookingForm
 from ..common.utils import get_common_data
 from ..parking_spots.models import ParkingSpot
 
-
 UserModel = get_user_model()
+
 
 class DeleteBookingsView(DeleteView):
     model = Booking
@@ -66,6 +66,9 @@ class CreateBookingsView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class BookingsView(ListView):
     model = UserModel
     template_name = "dashboard_bookings.html"
+    context_object_name = "user_bookings"
+    paginate_by = 10
+    ordering = "id"
 
     def get_queryset(self):
         user = self.request.user

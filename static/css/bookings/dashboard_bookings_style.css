@@ -1,0 +1,253 @@
+.tab-container {
+    height: 32px;
+    width: 1040px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    display: flex;
+    border: 1px solid #ccc;
+}
+
+.tablinks {
+    flex: 1;
+    padding: 0 50px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    width: 65.6px;
+}
+
+.tablinks:hover {
+    background: #1fcc30;
+    color: black;
+}
+
+.profile-card {
+    height: 250px;
+    width: 1000px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.profile-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.profile-details {
+    text-align: center;
+}
+
+.profile-details h1 {
+    font-size: 24px;
+    margin: 0 0 0 0;
+}
+
+.profile-details p {
+    font-size: 16px;
+    margin: 0 0 0 0;
+    height: 25px;
+}
+
+.profile-actions {
+    margin-top: 20px;
+}
+
+body > main > div > div > p {
+    padding: 0 0 0 0;
+}
+
+body > main > div > div img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+}
+
+.profile-card {
+    margin-top: 50px;
+    display: flex;
+}
+
+.profile-image, .profile-details {
+    flex: 1;
+}
+
+.profile-card .profile-picture {
+    width: 250px;
+    height: 250px;
+}
+
+.profile-card .profile-details span {
+    color: orange;
+}
+
+.booking-card {
+    width: 1000px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    display: flex;
+    border: 1px solid #ccc;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.booking-card div p {
+    margin: -10px 0 0 0;
+    font-size: 10px;
+    text-align: center;
+    padding: 0 0 0 0;
+}
+
+.listing-card .listing-details span {
+    margin: 0 0 0 0;
+    font-size: 15px;
+    text-align: right;
+}
+
+.listing-card .buttons-tab {
+    align-self: center;
+}
+
+.listing-card .buttons-tab a {
+    background: #1fcc30;
+    color: white;
+    display: grid;
+    text-decoration: None;
+    width: 75px;
+    text-align: center;
+}
+
+.listing-card .buttons-tab a:hover {
+    background: black;
+}
+
+.listing-card .buttons-tab .delete-button {
+    background: red;
+}
+
+.listing-card .listing-details div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.booking-card div h6 {
+    margin: 0 0 0 0;
+    font-size: 11px;
+    text-align: center;
+}
+
+body > main > div.booking-card > div:nth-child(2) {
+    max-width: 400px;
+}
+
+.booking-card > .cancel-btn {
+    width: 75px;
+    height: 30px;
+    background: red;
+    text-align: center;
+    align-self: center;
+}
+
+.booking-card .cancel-btn:hover {
+    background: black;
+}
+
+.booking-card .cancel-btn a {
+    text-decoration: none;
+}
+
+.pagination-container {
+    margin-top: 1em;
+    padding-top: 2em;
+    border-top: 1px solid #d7dadb;
+    text-align: center;
+    display: inline-flex;
+    width: 100%;
+}
+
+.pagination {
+    margin: 0 auto;
+}
+
+.pagination-item {
+    background-color: #1fcc30;
+    border-radius: 50%;
+    color: #fff;
+    float: left;
+    font-size: 32px;
+    height: 100px;
+    line-height: 3em;
+    list-style-type: none;
+    width: 100px;
+    position: relative;
+}
+
+.pagination-link {
+    padding: 1.1em 1.6em;
+    float: left;
+    text-decoration: none;
+    color: black;
+}
+
+.pagination-item--wide {
+    list-style-type: none;
+    float: left;
+    position: relative;
+    top: 2.3em;
+}
+
+.pagination-item--wide.first {
+    margin: 0 1em 0 0;
+}
+
+.pagination-item--wide.last {
+    margin: 0 0 0 1em;
+}
+
+.pagination-link--wide {
+    text-decoration: none;
+    color: black;
+    padding: 1.1em 1.6em;
+}
+
+.pagination-link--wide:hover {
+    color: white;
+}
+
+.pagination-link--wide.first:before,
+.pagination-link--wide.last:after {
+    font-family: 'entypo';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+/ / Better Font Rendering -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.pagination-link--wide.first:before {
+    content: "\E765";
+    margin-right: 0.5em;
+}
+
+.pagination-link--wide.last:after {
+    content: "\E766";
+    margin-left: 0.5em;
+}
+
+.pagination-number {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+}

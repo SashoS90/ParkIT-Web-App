@@ -106,18 +106,18 @@ class DeleteProfileView(UserPassesTestMixin, DeleteView):
         return user == profile
 
 
-class ListingsView(DetailView):
-    template_name = 'dashboard/dashboard_listings.html'
-    model = UserModel
-    context_object_name = "user_profile"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        user_profile = self.object
-        common_data = get_common_data(user_profile)
-        context.update(common_data)
-
-        return context
+# class ListingsView(DetailView):
+#     template_name = 'dashboard/dashboard_listings.html'
+#     model = UserModel
+#     context_object_name = "user_profile"
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         user_profile = self.object
+#         common_data = get_common_data(user_profile)
+#         context.update(common_data)
+#
+#         return context
 
 
 # class BookingsView(DetailView):

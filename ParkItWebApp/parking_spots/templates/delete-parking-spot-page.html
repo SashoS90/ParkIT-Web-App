@@ -14,7 +14,7 @@
                 <form method="post" action="{% url 'delete_parking_spot_page' parkingspot.id %}">
                     {% csrf_token %}
                         <button type="submit" class="edit-btn">Yes</button>
-                        <a href="{% url 'listings_view' request.user.id %}" class="edit-btn">No</a>
+                        <a href="{% url 'parking_spots_list_page' request.user.id %}" class="edit-btn">No</a>
                 </form>
             </div>
         </div>
