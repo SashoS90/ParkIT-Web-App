@@ -46,46 +46,48 @@
 
     <div class="tab-container">
         <a class="tablinks" href="{% url 'parking_spots_list_page' request.user.id %}">Listings</a>
-            <a class="tablinks" href="{% url 'bookings_view' request.user.id %}">Bookings</a>
-            <a class="tablinks" href="{% url 'payments_page' request.user.id %}">Payments</a>
-            <a class="tablinks" href="#">Reviews</a>
+        <a class="tablinks" href="{% url 'bookings_view' request.user.id %}">Bookings</a>
+        <a class="tablinks" href="{% url 'payments_page' request.user.id %}">Payments</a>
+        <a class="tablinks" href="{% url 'reviews_page' request.user.id %}">Reviews</a>
     </div>
 
-    {% for payment in user_payments %}
-        <div class="payment-card">
-        <p><span>ID:</span> {{ payment.id }}</p>
-        <p><span>PARKING SPOT:</span> {{ payment.booking.parking_spot.get_full_address }}</p>
-        <p><span>COMPLETED ON:</span> {{ payment.date_completed }}</p>
-        <p><span>AMOUNT PAID:</span> {{ payment.amount }}lv</p>
-        <p><span>USER:</span> {{ payment.user }}</p>
-        </div>
-    {% empty %}
-        <p>No payments.</p>
-    {% endfor %}
+{% if user_payments %}
+    <div class="payments-container">
+        {% for payment in user_payments %}
+            <p><span>ID</span> {{ payment.id }}
+                <span>PARKING:</span> {{ payment.booking.parking_spot.get_full_address }}
+                <span>DATE:</span> {{ payment.date_completed }} <span>AMOUNT PAID:</span> {{ payment.amount }}lv</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if not user_payments %}
+    <p>No payments.</p>
+    {% endif %}
 
     {% if is_paginated %}
-            <div class="pagination-container">
+        <div class="pagination-container">
 
-            <ul class="pagination">
-                {% if page_obj.has_previous %}
-                    <li class="pagination-item--wide first">
-                        <a class="pagination-link--wide first" href="?page={{ page_obj.previous_page_number }}">Prev</a>
-                    </li>
-                {% endif %}
-
-                <li class="pagination-item">
-                    <span class="pagination-number">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                <li class="pagination-item--wide first">
+                    <a class="pagination-link--wide first" href="?page={{ page_obj.previous_page_number }}">Prev</a>
                 </li>
+            {% endif %}
 
-                {% if page_obj.has_next %}
-                    <li class="pagination-item--wide last">
-                        <a class="pagination-link--wide last" href="?page={{ page_obj.next_page_number }}">Next</a>
-                    </li>
-                {% endif %}
+            <li class="pagination-item">
+                <span class="pagination-number">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+            </li>
 
-            </ul>
-        {% endif %}
+            {% if page_obj.has_next %}
+                <li class="pagination-item--wide last">
+                    <a class="pagination-link--wide last" href="?page={{ page_obj.next_page_number }}">Next</a>
+                </li>
+            {% endif %}
 
-        </div>
+        </ul>
+    {% endif %}
+
+</div>
 
 {% endblock %}

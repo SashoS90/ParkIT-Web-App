@@ -2,6 +2,7 @@ from enum import Enum
 
 from django.db import models
 
+from ParkItWebApp.accounts.models import UserProfile
 from ParkItWebApp.parking_spots.models import ParkingSpot
 
 
@@ -21,6 +22,7 @@ class Review(models.Model):
     parking_spot = models.ForeignKey(ParkingSpot, on_delete=models.CASCADE, related_name="reviews")
     rating = models.IntegerField(blank=False, null=False, choices=RatingPoints.choices())
     comment = models.TextField(blank=True, null=True)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="user_reviews")
 
     def __str__(self):
         return f"{self.parking_spot}"

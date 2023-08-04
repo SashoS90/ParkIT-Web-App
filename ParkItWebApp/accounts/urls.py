@@ -17,7 +17,5 @@ urlpatterns = [
     path('accounts/password_change/', ChangePasswordView.as_view(), name='password_change'),
     path('accounts/password_change/done/', PasswordChangeCompletedView.as_view(), name='password_change_completed'),
     path('profile/<int:pk>/delete', DeleteProfileView.as_view(), name='delete_profile_page'),
-    # path('profile/<int:pk>/listings/', ListingsView.as_view(), name='listings_view'),
-    # path('profile/<int:pk>/bookings/', BookingsView.as_view(), name='bookings_view'),
     path('profile/<int:pk>/', ProfileView.as_view(), name='profile_page'),
 ]

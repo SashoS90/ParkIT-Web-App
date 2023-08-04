@@ -8,15 +8,14 @@ UserModel = get_user_model()
 
 
 class PaymentsView(ListView):
-    model = UserModel
+    model = Payment
     template_name = "dashboard_payments.html"
     context_object_name = "user_payments"
     paginate_by = 10
-    ordering = "id"
 
     def get_queryset(self):
         user = self.request.user
-        queryset = Payment.objects.filter(user=user)
+        queryset = Payment.objects.filter(user=user).order_by("id")
         return queryset
 
     def get_context_data(self, **kwargs):

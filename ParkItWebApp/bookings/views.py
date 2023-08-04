@@ -64,15 +64,14 @@ class CreateBookingsView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 
 class BookingsView(ListView):
-    model = UserModel
+    model = Booking
     template_name = "dashboard_bookings.html"
     context_object_name = "user_bookings"
     paginate_by = 10
-    ordering = "id"
 
     def get_queryset(self):
         user = self.request.user
-        queryset = Booking.objects.filter(user=user)
+        queryset = Booking.objects.filter(user=user).order_by("id")
         return queryset
 
     def get_context_data(self, **kwargs):

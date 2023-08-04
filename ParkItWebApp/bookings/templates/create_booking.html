@@ -58,11 +58,14 @@
                 {% csrf_token %}
                 {% if form.non_field_errors %}
                     <div class="form-errors-box">
-                            {% for error in form.non_field_errors %}
-                                {{ error }}
-                            {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
                     </div>
                 {% endif %}
+                <div id="error_message" style="color: red; display: none;">
+                    Start time must be earlier than end time.
+                </div>
             </form>
         </div>
         <script>
@@ -72,7 +75,9 @@
                 const endTimeInput = document.getElementById("id_end_time");
                 const durationInput = document.getElementById("id_duration");
                 const priceInput = document.getElementById("id_price");
-                console.log(hourlyRate)
+                const errorDiv = document.getElementById("error_message"); // Create a div for displaying errors
+
+                console.log(hourlyRate);
 
                 function calculateDurationAndPrice() {
                     const startTime = new Date(startTimeInput.value);
@@ -85,9 +90,12 @@
 
                         const totalPrice = (Math.round(durationInHours * hourlyRate * 100) / 100).toFixed(2);
                         priceInput.value = totalPrice;
+
+                        errorDiv.style.display = "none"; // Hide the error message if the input is valid
                     } else {
                         durationInput.value = "";
                         priceInput.value = "";
+                        errorDiv.style.display = "block"; // Show the error message if the input is invalid
                     }
                 }
 
@@ -95,6 +103,8 @@
                 endTimeInput.addEventListener("change", calculateDurationAndPrice);
             });
         </script>
+
+
     </div>
 {% endblock %}
 

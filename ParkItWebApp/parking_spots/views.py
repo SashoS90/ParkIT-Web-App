@@ -47,7 +47,7 @@ class DeleteParkingSpotView(DeleteView):
         return reverse("parking_spots_list_page", args=[user_id])
 
 
-class FindParkingView(ListView):
+class FindParkingView(LoginRequiredMixin, ListView):
     model = ParkingSpot
     template_name = "find-parking-page.html"
     context_object_name = "all_search_results"
@@ -76,15 +76,14 @@ class ParkingSpotDetailsView(DetailView):
 
 
 class ParkingSpotsListView(ListView):
-    model = UserModel
+    model = ParkingSpot
     template_name = "dashboard_listings.html"
     context_object_name = "user_listings"
     paginate_by = 10
-    ordering = "id"
 
     def get_queryset(self):
         user = self.request.user
-        queryset = ParkingSpot.objects.filter(owner=user)
+        queryset = ParkingSpot.objects.filter(owner=user).order_by("id")
         return queryset
 
     def get_context_data(self, **kwargs):

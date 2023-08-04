@@ -85,23 +85,62 @@ body > main > div > div img {
     color: orange;
 }
 
-.payments-container {
+.reviews-container .review-box {
     background: white;
     width: 1040px;
     margin: 20px auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.payments-container p{
-    font-size: 12px;
-    padding: unset;
-    margin: unset;
-    word-spacing: 5px;
+.reviews-container .review-box .name-section {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+    font-weight: bold;
 }
 
-.payments-container p span{
-    font-weight: bold;
+.reviews-container .review-box .rating-section {
+    text-align-last: right;
+}
+
+.reviews-container .review-box .rating-section {
+    display: flex;
+    width: 120px;
+    background: lightgrey;
+    margin: 0 0 0 910px;
     color: black;
+}
+
+.reviews-container .review-box .rating-section p {
+    margin: unset;
+    padding: 0 0 0 7px;
+}
+
+.reviews-container .review-box .comment-section {
+    width: 970px;
+    margin: 20px auto;
+    display: flex;
+}
+
+.reviews-container .review-box .comment-section div {
+    margin: unset;
+    padding-bottom: 5px;
+}
+
+.reviews-container .review-box .comment-section div p {
+    margin: unset;
+    padding: unset;
+}
+
+.reviews-container .review-box .comment-section .comment{
+    word-break: break-word;
+    font-size: 15px;
+}
+
+.reviews-container .review-box .comment-section .username{
+    font-weight: bold;
+    padding-right: 10px;
+    font-size: 15px;
 }
 
 .pagination-container {

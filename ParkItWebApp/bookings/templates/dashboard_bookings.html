@@ -49,7 +49,7 @@
         <a class="tablinks" href="{% url 'parking_spots_list_page' request.user.id %}">Listings</a>
         <a class="tablinks" href="{% url 'bookings_view' request.user.id %}">Bookings</a>
         <a class="tablinks" href="{% url 'payments_page' request.user.id %}">Payments</a>
-        <a class="tablinks" href="#">Reviews</a>
+        <a class="tablinks" href="{% url 'reviews_page' request.user.id %}">Reviews</a>
     </div>
 
     {% for booking in user_bookings %}
