@@ -160,6 +160,10 @@ body > main > div > div img {
     justify-content: space-between;
 }
 
+.listing-card .buttons-tab .view-btn{
+    background: dodgerblue;
+}
+
 .pagination-container {
 	margin-top: 1em;
 	padding-top: 2em;
@@ -250,4 +254,3 @@ body > main > div > div img {
     top: 0;
     width: 100%;
 }
-

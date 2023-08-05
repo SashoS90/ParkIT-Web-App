@@ -23,6 +23,7 @@ class Review(models.Model):
     rating = models.IntegerField(blank=False, null=False, choices=RatingPoints.choices())
     comment = models.TextField(blank=True, null=True)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="user_reviews")
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
         return f"{self.parking_spot}"

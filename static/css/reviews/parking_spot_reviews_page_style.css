@@ -47,76 +47,65 @@ body > main > div > div > div .detail {
     background: black;
 }
 
-.reviews-container .review-box {
-    background: white;
-    width: 700px;
-    margin: 20px auto;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.reviews-container .review-box .name-section {
-    display: flex;
-    width: fit-content;
-    margin: auto;
-    font-weight: bold;
-}
-
-.reviews-container .review-box .rating-section {
-    text-align-last: right;
+.reviews-container .review-box{
+    width: 650px;
+    display: block;
+    border: groove;
 }
 
 .reviews-container .review-box .rating-section {
     display: flex;
     width: 120px;
     background: lightgrey;
-    margin: 0 0 0 570px;
     color: black;
+    height: fit-content;
+    margin-left: 524px;
+    margin-top: 5px;
 }
 
 .reviews-container .review-box .rating-section p {
     margin: unset;
-    padding: 0 0 0 7px;
+    padding: 0 0 0 5px;
+}
+
+hr{
+    width: 650px;
+    border-bottom-style: solid;
 }
 
 .reviews-container .review-box .comment-section {
-    width: 650px;
     margin: 20px auto;
     display: flex;
-    justify-content: unset;
+    margin-right: 10px;
 }
 
-.reviews-container .review-box .comment-section div {
-    margin: unset;
-    padding-bottom: 5px;
-}
-
-.reviews-container .review-box .comment-section div p {
+.reviews-container .review-box .comment-section p{
+    font-size: 15px;
     margin: unset;
     padding: unset;
 }
 
-.reviews-container .review-box .comment-section .comment{
-    word-break: break-word;
-    font-size: 15px;
-}
-
-.reviews-container .review-box .comment-section .username{
-    font-weight: bold;
-    padding-right: 10px;
+.reviews-container .review-box .comment-section span{
     font-size: 15px;
 }
 
 .reviews-container .review-box .date-section{
     width: inherit;
-    justify-content: flex-end;
     font-size: 13px;
-    margin-left: -5px;
 }
 
 .reviews-container .review-box .date-section p{
-    margin: unset;
     padding: unset;
+    display: flex;
+    justify-content: flex-end;
+}
 
+.username{
+    display: flex;
+    min-width: fit-content;
+    height: fit-content;
+    font-weight: bold;
+    padding-right: 10px;
 }
 
 .pagination-container {
@@ -207,19 +196,4 @@ body > main > div > div > div .detail {
     text-align: center;
     top: 0;
     width: 100%;
-}
-
-.all-reviews-btn{
-    margin: 20px auto;
-    width: 135px;
-    background: #1fcc30;
-}
-
-.all-reviews-btn a{
-    text-decoration: none;
-    padding-left: 10px;
-}
-
-.all-reviews-btn:hover{
-    background: black;
 }

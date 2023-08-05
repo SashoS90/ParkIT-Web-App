@@ -3,7 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.urls import reverse
-
 from ParkItWebApp.common.utils import get_common_data
 from ParkItWebApp.parking_spots.forms import RentParkingSpotForm, EditParkingSpotForm
 from ParkItWebApp.parking_spots.models import ParkingSpot
@@ -73,6 +72,18 @@ class ParkingSpotDetailsView(DetailView):
     model = ParkingSpot
     template_name = "view-parking-spot-page.html"
     context_object_name = "parking_spot"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        parking_spot = self.object
+
+        reviews = parking_spot.reviews.all().order_by('-date_created')
+        rating = sum(review.rating for review in reviews) / len(reviews)
+        context['reviews_count'] = len(reviews)
+        context['reviews'] = reviews
+        context['rating'] = rating
+
+        return context
 
 
 class ParkingSpotsListView(ListView):

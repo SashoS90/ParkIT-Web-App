@@ -99,6 +99,8 @@
             <div class="buttons-tab">
                 <a href="{% url 'edit_parking_spot_page' listing.id %}">Edit</a>
                 <br>
+                <a class="view-btn" href="{% url 'parking_spot_details_page' listing.id %}">View</a>
+                <br>
                 <a  class="delete-button" href="{% url 'delete_parking_spot_page' listing.id %}">Delete</a>
             </div>
 

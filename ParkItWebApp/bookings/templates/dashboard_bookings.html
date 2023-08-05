@@ -83,7 +83,8 @@
                 <p>{{ booking.created_at }}</p>
             </div>
         <div class="cancel-btn">
-            <a href="{% url 'delete-bookings-page' booking.id %}">Delete</a>
+            <a class="review" href="{% url 'create_review_page' booking.parking_spot.id %}">Review</a>
+            <a class="delete" href="{% url 'delete-bookings-page' booking.id %}">Delete</a>
         </div>
         </div>
     {% empty %}

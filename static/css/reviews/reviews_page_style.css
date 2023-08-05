@@ -143,6 +143,23 @@ body > main > div > div img {
     font-size: 15px;
 }
 
+.reviews-container .review-box .date-section{
+    width: 970px;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 62px;
+    font-size: 15px;
+}
+
+.reviews-container .review-box .date-section p{
+    margin: unset;
+    padding: unset;
+}
+
+.username{
+    min-width: fit-content;
+}
+
 .pagination-container {
     margin-top: 1em;
     padding-top: 2em;

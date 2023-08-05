@@ -1,0 +1,139 @@
+.parking-spot-container {
+    margin: 20px auto;
+    width: 700px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.parking-spot-container h6 {
+    text-align: center;
+    margin: unset;
+    font-size: 25px;
+}
+
+.parking-spot-container img {
+    max-width: 96%;
+    padding: 14px 14px 0 14px;
+    height: 465px;
+    width: 765px;
+    object-fit: cover;
+}
+
+body > main > div > div > div {
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+}
+
+body > main > div > div > div .detail {
+    padding: unset;
+    font-size: 15px;
+    height: fit-content;
+    margin: unset;
+}
+
+.parking-spot-container a {
+    background: #46de4b;
+    width: 160px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    margin: 20px auto;
+    margin-bottom: 10px;
+}
+
+.parking-spot-container a:hover {
+    background: black;
+}
+
+.reviews-container {
+    width: 500px;
+    margin: 20px auto;
+}
+
+.reviews-container form div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.reviews-container form div .comment-box-label{
+    margin: 55px 0 0 0;
+}
+
+.reviews-container form div textarea{
+    resize: none;
+}
+
+.reviews-container form .control-tab{
+    width: fit-content;
+    margin: 20px 0 0 401px;
+}
+
+.reviews-container form .control-tab input{
+    width: 100px;
+    font-size: 17px;
+    background: #1fcc30;
+    color: white;
+}
+
+.reviews-container form .control-tab input:hover{
+    background: black;
+    cursor: pointer;
+}
+
+.reviews-container .review-box .rating-section {
+    display: flex;
+    width: 120px;
+    background: lightgrey;
+    color: black;
+    height: fit-content;
+    margin-left: 524px;
+    margin-top: 5px;
+}
+
+.reviews-container .review-box .rating-section p {
+    margin: unset;
+    padding: 0 0 0 5px;
+}
+
+hr {
+    width: 650px;
+    border-bottom-style: solid;
+}
+
+.reviews-container .review-box .comment-section {
+    margin: 20px auto;
+    display: flex;
+    margin-right: 10px;
+}
+
+.reviews-container .review-box .comment-section p {
+    font-size: 15px;
+    margin: unset;
+    padding: unset;
+}
+
+.reviews-container .review-box .comment-section span {
+    font-size: 15px;
+}
+
+.reviews-container .review-box .date-section {
+    width: inherit;
+    font-size: 13px;
+}
+
+.reviews-container .review-box .date-section p {
+    padding: unset;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.username {
+    display: flex;
+    min-width: fit-content;
+    height: fit-content;
+    font-weight: bold;
+    padding-right: 10px;
+}

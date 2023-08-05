@@ -10,42 +10,83 @@
     </head>
     <div class="parking-spot-container">
         {% if parking_spot.image %}
-    <img src="{{ parking_spot.image.url }}" alt="parking-image">
-    {% else %}
-    <img src="{% static 'images/no-property-photo.jpg' %}" alt="parking-image">
+            <img src="{{ parking_spot.image.url }}" alt="parking-image">
+        {% else %}
+            <img src="{% static 'images/no-property-photo.jpg' %}" alt="parking-image">
+        {% endif %}
+        <h6>{{ parking_spot.get_full_address }}</h6>
+        <div class="property-details">
+            <div>
+                <p class="detail">Address:</p>
+                <p class="detail">{{ parking_spot.get_full_address }}</p>
+            </div>
+            <div>
+                <p class="detail">Type of space:</p>
+                <p class="detail">{{ parking_spot.type_of_space }}</p>
+            </div>
+            <div>
+                <p class="detail">Electric charger:</p>
+                <p class="detail">{{ parking_spot.electric_vehicle_charger }}</p>
+            </div>
+            <div>
+                <p class="detail">Parking fee:</p>
+                <p class="detail">{{ parking_spot.hourly_rate }} /hr</p>
+            </div>
+            <div>
+                <p class="detail">Status:</p>
+                {% if parking_spot.status %}
+                    <p class="detail">Available</p>
+                {% else %}
+                    <p class="detail">Unavailable</p>
+                {% endif %}
+            </div>
+            <div>
+                <p class="detail">Owner:</p>
+                <p class="detail">{{ parking_spot.owner }}</p>
+            </div>
+            <div>
+                <p class="detail">Reviews:</p>
+                {% if reviews_count %}
+                    <p class="detail">{{ reviews_count }}</p>
+                {% else %}
+                    <p class="detail">N/A</p>
+                {% endif %}
+            </div>
+            <div>
+                <p class="detail">Rating:</p>
+                <p class="detail">{{ rating }} / 5</p>
+            </div>
+        </div>
+        <a href="{% url 'create-bookings-page' parking_spot.id %}">Book Parking</a>
+        <br>
+    </div>
+    <div class="reviews-container">
+        {% for review in reviews|slice:":3" %}
+            <div class="review-box">
+                <div class="name-section">{{ review.parking_spot }}
+                </div>
+                <div class="rating-section"><p>Rating: {{ review.rating }}/5</p>
+                </div>
+                <div class="comment-section">
+                    <div class="username">
+                        <span>{{ review.user }}:</span>
+                    </div>
+                    <div class="comment">
+                        <p>{{ review.comment }}</p>
+                    </div>
+                </div>
+                <div class="date-section">
+                    <p>Date: {{ review.date_created }}</p>
+                </div>
+            </div>
+        {% empty %}
+            <p>No reviews.</p>
+        {% endfor %}
+    </div>
+    {% if reviews_count > 2 %}
+        <div class="all-reviews-btn">
+            <a href="{% url 'parking_spot_reviews_page' parking_spot.id %}">All Reviews</a>
+        </div>
     {% endif %}
-    <h6>{{ parking_spot.get_full_address }}</h6>
-    <div class="property-details">
-        <div>
-            <p class="detail">Address:</p>
-            <p class="detail">{{ parking_spot.get_full_address }}</p>
-        </div>
-        <div>
-            <p class="detail">Type of space:</p>
-            <p class="detail">{{ parking_spot.type_of_space }}</p>
-        </div>
-        <div>
-            <p class="detail">Electric charger:</p>
-            <p class="detail">{{ parking_spot.electric_vehicle_charger }}</p>
-        </div>
-        <div>
-            <p class="detail">Parking fee:</p>
-            <p class="detail">{{ parking_spot.hourly_rate }} /hr</p>
-        </div>
-        <div>
-            <p class="detail">Status:</p>
-            {% if parking_spot.status %}
-            <p class="detail">Available</p>
-            {% else %}
-            <p class="detail">Unavailable</p>
-            {% endif %}
-        </div>
-        <div>
-            <p class="detail">Owner:</p>
-            <p class="detail">{{ parking_spot.owner }}</p>
-        </div>
-    </div>
-        <a href="{% url 'create-bookings-page' parking_spot.id%}">Book Parking</a>
-    <br>
-    </div>
+
 {% endblock %}

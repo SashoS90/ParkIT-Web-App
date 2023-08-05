@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Your Project</title>
+        <link rel="stylesheet" href="{% static 'css/reviews/create_review_page_style.css' %}">
+    </head>
+    <div class="parking-spot-container">
+        {% if parking_spot.image %}
+    <img src="{{ parking_spot.image.url }}" alt="parking-image">
+    {% else %}
+    <img src="{% static 'images/no-property-photo.jpg' %}" alt="parking-image">
+    {% endif %}
+    <h6>{{ parking_spot.get_full_address }}</h6>
+    <hr>
+    <div class="reviews-container">
+        <form action="{% url 'create_review_page' parking_spot.id %}" method="POST">
+            <div class="form-field">
+                {% csrf_token %}
+                <label>Rate parking: </label>
+                {{ form.rating }}
+                {{ form.errors }}
+            </div>
+            <div>
+                <label class="comment-box-label">Add comment: </label>
+                {{ form.comment }}
+            </div>
+            <div class="control-tab">
+                <input type="submit" class="submit-review-btn" value="Submit">
+            </div>
+        </form>
+    </div>
+    <br>
+    </div>
+{% endblock %}

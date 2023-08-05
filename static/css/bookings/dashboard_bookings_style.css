@@ -148,13 +148,21 @@ body > main > div.booking-card > div:nth-child(2) {
 
 .booking-card > .cancel-btn {
     width: 75px;
-    height: 30px;
-    background: red;
     text-align: center;
     align-self: center;
+    display: grid;
 }
 
-.booking-card .cancel-btn:hover {
+.booking-card .cancel-btn .delete{
+    margin-top: 6px;
+    background: red;
+}
+
+.booking-card .cancel-btn .review{
+    background: #1fcc30;
+}
+
+.booking-card .cancel-btn a:hover{
     background: black;
 }
 
