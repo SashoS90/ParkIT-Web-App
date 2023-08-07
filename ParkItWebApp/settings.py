@@ -26,8 +26,8 @@ SECRET_KEY = 'django-insecure-+b^6)=gb9=nc=)qeauwmmlx!af*@kl71#5mh3r9=xqi6tui)b2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-if DEBUG:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# if DEBUG:
+#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ALLOWED_HOSTS = []
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ParkItWebApp.accounts',
+    'ParkItWebApp.accounts.apps.AccountsConfig',
     'ParkItWebApp.bookings',
     'ParkItWebApp.common',
     'ParkItWebApp.parking_spots',
@@ -143,3 +143,11 @@ LOGIN_URL = reverse_lazy('login_page')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'djangoprojects90@gmail.com'
+EMAIL_HOST_PASSWORD = 'xaoxpvacdziqrjsm'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

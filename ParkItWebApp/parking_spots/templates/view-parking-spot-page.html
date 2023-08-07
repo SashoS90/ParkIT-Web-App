@@ -54,7 +54,11 @@
             </div>
             <div>
                 <p class="detail">Rating:</p>
+                {% if rating %}
                 <p class="detail">{{ rating }} / 5</p>
+                {% else %}
+                <p class="detail">N/A</p>
+                {% endif %}
             </div>
         </div>
         <a href="{% url 'create-bookings-page' parking_spot.id %}">Book Parking</a>

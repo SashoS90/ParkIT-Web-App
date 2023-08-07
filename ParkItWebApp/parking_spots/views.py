@@ -78,7 +78,11 @@ class ParkingSpotDetailsView(DetailView):
         parking_spot = self.object
 
         reviews = parking_spot.reviews.all().order_by('-date_created')
-        rating = sum(review.rating for review in reviews) / len(reviews)
+        if reviews:
+            rating = sum(review.rating for review in reviews) / len(reviews)
+        else:
+            rating = None
+
         context['reviews_count'] = len(reviews)
         context['reviews'] = reviews
         context['rating'] = rating

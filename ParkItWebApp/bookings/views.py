@@ -20,7 +20,7 @@ class DeleteBookingsView(DeleteView):
 
     def get_success_url(self):
         user_id = self.request.user.id
-        return reverse("listings_view", args=[user_id])
+        return reverse("bookings_view", args=[user_id])
 
 
 class CreateBookingsView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -28,7 +28,6 @@ class CreateBookingsView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = CreateBookingForm
     template_name = 'create_booking.html'
     success_url = reverse_lazy('bookings_view')
-    success_message = "Booking was created successfully."
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
