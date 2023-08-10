@@ -54,7 +54,7 @@ class FindParkingView(LoginRequiredMixin, ListView):
     ordering = ["id"]
 
     def get_queryset(self):
-        result = super(FindParkingView, self).get_queryset()
+        result = super(FindParkingView, self).get_queryset().filter(status=True)
         query = self.request.GET.get("search")
 
         if query:
@@ -62,7 +62,8 @@ class FindParkingView(LoginRequiredMixin, ListView):
                 Q(city__icontains=query) |
                 Q(post_code__icontains=query) |
                 Q(street__icontains=query) |
-                Q(house_number__icontains=query)
+                Q(house_number__icontains=query),
+                status=True,
             )
 
         return result

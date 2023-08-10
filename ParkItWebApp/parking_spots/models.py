@@ -2,10 +2,8 @@ from django.db import models
 from enum import Enum
 from django.core.validators import MinLengthValidator, MinValueValidator
 from .validators import post_code_validator
-
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
 from ParkItWebApp.accounts.models import UserProfile
 from django.utils import timezone
 

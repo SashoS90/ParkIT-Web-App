@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model, login, logout
+from django.contrib.auth import get_user_model, login
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.urls import reverse_lazy
@@ -33,8 +33,11 @@ class LoginUserView(LoginView):
 
     def form_valid(self, form):
         user = form.get_user()
-        login(self.request, user)
-        return super().form_valid(form)
+        if user is not None and user.is_active:
+            login(self.request, user)
+            return super().form_valid(form)
+
+        return self.form_invalid(form)
 
 
 class LogoutUserView(LogoutView):
@@ -86,7 +89,6 @@ class ChangePasswordView(LoginRequiredMixin, PasswordChangeView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        logout(self.request)
         return redirect(self.get_success_url())
 
 

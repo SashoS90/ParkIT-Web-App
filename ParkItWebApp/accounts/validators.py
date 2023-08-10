@@ -12,7 +12,7 @@ def contains_only_letters(value):
 
 
 def phone_number_validator(value):
-    VALID_MOBILE_NUMBER_CODES = ["088", "089", "098", "087"]
+    valid_mobile_number_codes = ["088", "089", "098", "087"]
 
     if not value.startswith("0"):
         raise ValidationError("Invalid mobile number! Mobile number must start with 0!")
@@ -23,7 +23,7 @@ def phone_number_validator(value):
     if value.startswith("0") and len(value) < 10:
         raise ValidationError("Invalid phone number!")
 
-    for mobile_code in VALID_MOBILE_NUMBER_CODES:
+    for mobile_code in valid_mobile_number_codes:
         if value.startswith(mobile_code):
             break
 

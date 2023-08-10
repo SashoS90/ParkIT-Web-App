@@ -5,24 +5,43 @@ UserModel = get_user_model()
 
 
 class RegisterUserForm(auth_forms.UserCreationForm):
+    error_messages = {
+        'password_mismatch': "The two password fields did not match.",
+    }
+
     class Meta:
         model = UserModel
         fields = ['email', 'password1', 'password2', 'first_name', 'last_name', 'phone_number', 'username']
 
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
+
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError(
+                self.error_messages['password_mismatch'],
+                code='password_mismatch',
+            )
+
 
 class LoginUserForm(auth_forms.AuthenticationForm):
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    error_messages = {
+        'invalid_login': (
+            "Incorrect username or password. Please check your credentials and try again. "
+            "Alternatively, create a new account."
+        ),
+    }
 
     def confirm_login_allowed(self, user):
-        if not user:
+        if user is None:
             raise forms.ValidationError(
-                "Username not found. Please enter a valid username."
+                self.error_messages['invalid_login'],
+                code='invalid_login'
             )
-        super().confirm_login_allowed(user)
 
 
 class EditProfileForm(forms.ModelForm):
-    class Meta():
+    class Meta:
         model = UserModel
         fields = ["first_name", "last_name", "email", "phone_number", "profile_picture"]
