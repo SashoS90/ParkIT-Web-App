@@ -3,13 +3,13 @@
 
 {% block content %}
     <head>
-        <title>Profile Page</title>
+        <title>Delete Parking Page</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/parking_spots/delete_parking_style.css' %}">
     </head>
     <body>
     <div class="confirmation-card">
         <div class="confirmation-details">
-            <h1>Delete parking spot?</h1>
+            <h1>Delete booking?</h1>
             <div class="form-actions">
                 <form method="post" action="{% url 'delete-bookings-page' booking.id %}">
                     {% csrf_token %}

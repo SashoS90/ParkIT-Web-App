@@ -1,7 +1,6 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
-
 from ParkItWebApp.accounts.views import RegisterUserView, LoginUserView, LogoutUserView, ProfileView, DashboardView, \
     EditProfileView, ChangePasswordView, PasswordChangeCompletedView, DeleteProfileView
 

@@ -9,7 +9,7 @@ class CreateBookingForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['start_time'].widget = forms.DateTimeInput(attrs={'type': 'datetime-local', 'step': '1800'})
-        self.fields['end_time'].widget = forms.DateTimeInput(attrs={'type': 'datetime-local', 'step': '1800'})
+        self.fields['start_time'].widget = forms.DateTimeInput(attrs={'type': 'datetime-local'})
+        self.fields['end_time'].widget = forms.DateTimeInput(attrs={'type': 'datetime-local'})
         self.fields['duration'].widget.attrs['readonly'] = True
         self.fields['price'].widget.attrs['readonly'] = True

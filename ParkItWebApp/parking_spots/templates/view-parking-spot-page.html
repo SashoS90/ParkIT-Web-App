@@ -61,8 +61,12 @@
                 {% endif %}
             </div>
         </div>
-        <a href="{% url 'create-bookings-page' parking_spot.id %}">Book Parking</a>
-        <br>
+        {% if parking_spot.owner != request.user %}
+
+    <a href="{% url 'create-bookings-page' parking_spot.id %}">Book Parking</a>
+    <br>
+
+{% endif %}
     </div>
     <div class="reviews-container">
         {% for review in reviews|slice:":3" %}
